@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const RegisterScreen = () => {
     return (
-        <>
+        <div>
              <h3 className='auth__title'>Register</h3>
 
             <form>
@@ -52,6 +52,6 @@ export const RegisterScreen = () => {
                     Already registered?
                 </Link>
             </form>
-        </>
+        </div>
     )
 }
