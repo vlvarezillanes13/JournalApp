@@ -5,9 +5,9 @@ import {
     Route,
     Redirect
   } from "react-router-dom";
-
+import { JournalScreen } from '../components/journal/JournalScreen';
 import { AuthRouter } from './AuthRouter';
-import { JournalScreen } from '../journal/JournalScreen';
+
 
 export const AppRouter = () => {
     return (
