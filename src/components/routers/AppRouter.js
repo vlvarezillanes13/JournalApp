@@ -11,18 +11,16 @@ import { JournalScreen } from '../journal/JournalScreen';
 
 export const AppRouter = () => {
     return (
-        <div className='auth__main'>
-            <div className='auth_box-container'>
-                <Router>
-                    <Switch>
-                        <Route path="/auth" component={ AuthRouter } />
+        
+        <Router>
+            <Switch>
+                <Route path="/auth" component={ AuthRouter } />
 
-                        <Route exact path="/" component={ JournalScreen } />
+                <Route exact path="/" component={ JournalScreen } />
 
-                        <Redirect to='/auth/login' />
-                    </Switch>
-                </Router>
-            </div>
-        </div>
+                <Redirect to='/auth/login' />
+            </Switch>
+        </Router>
+
     )
 }
