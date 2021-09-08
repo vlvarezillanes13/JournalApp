@@ -30,6 +30,9 @@ export const startGoogleLogin = () => {
                     login(user.multiFactor.user.uid,user.multiFactor.user.displayName)
                 )
             })
+            .catch(e => {
+                console.log(e);
+            })
     }
 }
 
@@ -60,4 +63,16 @@ export const login = (uid, displayName) => ({
         uid,
         displayName
     }
+});
+
+
+export const startLogout = () => {
+    return async(dispatch) => {
+        await firebase.auth().signOut();
+        dispatch( logout());
+    }
+}
+
+export const logout = () => ({
+    type: types.logout
 });
