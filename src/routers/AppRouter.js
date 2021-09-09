@@ -11,6 +11,8 @@ import { useDispatch } from 'react-redux';
 import { login } from '../actions/auth';
 import { PublicRouters } from './PublicRouters';
 import { PrivateRouters } from './PrivateRouters';
+import { loadNotes } from '../helpers/loadNotes';
+import { setNote } from '../actions/notes';
 
 
 export const AppRouter = () => {
@@ -21,10 +23,13 @@ export const AppRouter = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-        firebase.auth().onAuthStateChanged(user => {
+        firebase.auth().onAuthStateChanged( async( user ) => {
             if( user?.multiFactor.user.uid){
                 dispatch(login(user.multiFactor.user.uid, user.multiFactor.user.displayName));
                 setIsLoggedIn(true);
+
+                const notes = await loadNotes(user.multiFactor.user.uid)
+                dispatch( setNote(notes));
             }else{
                 setIsLoggedIn(false);
             }
